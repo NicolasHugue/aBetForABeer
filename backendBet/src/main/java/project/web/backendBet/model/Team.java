@@ -22,6 +22,7 @@ public class Team {
     private String name;
 
     private int points;
+    private int totalMatch;
     private int wins;
     private int draws;
     private int losses;
