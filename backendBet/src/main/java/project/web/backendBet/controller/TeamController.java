@@ -1,6 +1,5 @@
-package project.web.backendBet.controllerRest;
+package project.web.backendBet.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,13 +12,17 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/api/teams")
 @CrossOrigin(origins = "*")
-public class teamController {
+public class TeamController {
 
-    @Autowired
-    private TeamService teamService;
+
+    private final TeamService teamService;
+
+    public TeamController(TeamService teamService) {
+        this.teamService = teamService;
+    }
 
     @GetMapping("/ranking")
-    public List<Team> getTeamRanking (){
-        return teamService.getTeamsByPointsDesc();
+    public List<Team> getTeamRanking() {
+        return teamService.getRanking();
     }
 }

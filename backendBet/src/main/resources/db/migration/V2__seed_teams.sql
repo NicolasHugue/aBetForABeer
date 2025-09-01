@@ -1,0 +1,17 @@
+INSERT INTO team (name) VALUES
+('U.S. Ploegsteert-Bizet'),
+('K.F.C. Poperinge'),
+('Kv Koksijde Oostduinkerke A'),
+('S.K. Staden'),
+('Vkw Vleteren'),
+('S.K. Eernegem A'),
+('Fa Nieuwpoort A'),
+('VK Langemark-Poekapelle'),
+('K. Sassport Boezinge B'),
+('Sparta Dikkebus'),
+('S.C. Middlekerke United'),
+('K.E.G. Gistel'),
+('B.S. Geluveld A'),
+('Three Stars Club Proven'),
+('S.K. Nieuwkerke'),
+('Sporting Keiem');

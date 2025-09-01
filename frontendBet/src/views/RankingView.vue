@@ -25,7 +25,7 @@ export default {
 
   <div class="px-20">
     <ranking-table
-      :headers="['Equipes', 'PTS', 'M', 'V', 'N', 'D', '+', '-']"
+      :headers="['Equipes', 'PTS', 'M', 'V', 'N', 'D', '+', '-', '+/-']"
       :fields="[
         'name',
         'points',
@@ -35,6 +35,7 @@ export default {
         'losses',
         'goalsFor',
         'goalsAgainst',
+        'goalDifference',
       ]"
       :items="teams"
     >
