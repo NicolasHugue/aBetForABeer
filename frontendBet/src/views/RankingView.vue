@@ -10,7 +10,7 @@ export default {
   },
   methods: {
     async fetchData() {
-      const url = "http://localhost:8080/api/teams/ranking";
+      const url = "/api/teams/ranking";
       this.teams = await (await fetch(url)).json();
     },
   },
