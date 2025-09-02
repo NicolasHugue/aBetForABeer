@@ -8,17 +8,20 @@
       <div class="flex items-center justify-between h-12">
         <ul class="flex space-x-6 ml-4">
           <li>
-            <router-link :to="{ name: 'home' }" class="nav-li" active-class="nav-li-active"
-              >Accueil
-            </router-link>
-          </li>
-          <li>
-            <router-link :to="{ name: 'ranking' }" class="nav-cli" active-class="nav-li-active"
+            <router-link :to="{ name: 'home' }" class="nav-cli" active-class="nav-li-active"
               >Classement
             </router-link>
           </li>
-          <li>Calendrier</li>
-          <li>Vote</li>
+          <li>
+            <router-link :to="{ name: 'schedule' }" class="nav-cli" active-class="nav-li-active">
+              Calendrier
+            </router-link>
+          </li>
+          <li>
+            <router-link :to="{ name: 'addMatch' }" class="nav-cli" active-class="nav-li-active">
+              Ajout de Match
+            </router-link>
+          </li>
         </ul>
         <login-button />
       </div>

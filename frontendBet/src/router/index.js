@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "@/views/HomeView.vue";
 import RankingView from "@/views/RankingView.vue";
+import ScheduleView from "@/views/ScheduleView.vue";
+import AddMatchView from "@/views/AddMatchView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,12 +9,17 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: HomeView,
+      component: RankingView,
     },
     {
-      path: "/ranking",
-      name: "ranking",
-      component: RankingView,
+      path: "/schedule",
+      name: "schedule",
+      component: ScheduleView,
+    },
+    {
+      path: "/addMatch",
+      name: "addMatch",
+      component: AddMatchView,
     },
   ],
 });
