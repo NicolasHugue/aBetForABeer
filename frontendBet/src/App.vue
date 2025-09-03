@@ -1,3 +1,9 @@
+<script setup>
+import LoginButton from "@/components/LoginButton.vue";
+import { useAuthStore } from "@/stores/auth";
+const auth = useAuthStore();
+</script>
+
 <template>
   <div class="min-h-screen flex flex-col bg-gray-50">
     <header class="bg-gray-900">
@@ -12,12 +18,12 @@
               >Classement
             </router-link>
           </li>
-          <li>
+          <li v-if="auth.isAuthenticated">
             <router-link :to="{ name: 'schedule' }" class="nav-cli" active-class="nav-li-active">
               Calendrier
             </router-link>
           </li>
-          <li>
+          <li v-if="auth.isAdmin">
             <router-link :to="{ name: 'addMatch' }" class="nav-cli" active-class="nav-li-active">
               Ajout de Match
             </router-link>
