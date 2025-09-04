@@ -12,7 +12,7 @@ env:
   ACR_NAME: abfabacr1234 # = var.acr_name (mets le même)
   TF_WORKING_DIR: infra
   TF_BACKEND_RG: tfstate-rg # ceux créés en 0.2
-  TF_BACKEND_STORAGE: abfabtfstate1490451286 # remplace par le nom réel
+  TF_BACKEND_STORAGE: abfabtfstate885700831
   TF_BACKEND_CONTAINER: tfstate
   TF_STATE_KEY: abfab.tfstate
 
