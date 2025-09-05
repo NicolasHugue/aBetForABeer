@@ -27,15 +27,19 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable()) // API stateless → pas de CSRF
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        // PUBLIC
                         .requestMatchers(HttpMethod.GET, "/api/teams/ranking").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/teams").permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
-                        // SCHEDULE (lecture) → USER ou ADMIN
+
+                        // calendrier & paris : USER & ADMIN
                         .requestMatchers(HttpMethod.GET, "/api/matches/**").hasAnyRole("USER","ADMIN")
-                        // AJOUT DE MATCH → ADMIN
+                        .requestMatchers(HttpMethod.GET, "/api/bets/**").hasAnyRole("USER","ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/bets").hasAnyRole("USER","ADMIN")
+
+                        // création match + mise à jour score : ADMIN
                         .requestMatchers(HttpMethod.POST, "/api/matches/**").hasRole("ADMIN")
-                        // le reste → authentifié
+                        .requestMatchers(HttpMethod.PUT,  "/api/matches/**").hasRole("ADMIN")
+
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);

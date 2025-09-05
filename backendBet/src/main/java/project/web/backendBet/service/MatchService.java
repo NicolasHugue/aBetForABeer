@@ -4,6 +4,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import project.web.backendBet.dto.CreateMatchRequest;
 import project.web.backendBet.dto.MatchSummary;
+import project.web.backendBet.dto.SetScoreRequest;
 import project.web.backendBet.model.Match;
 import project.web.backendBet.model.MatchStatus;
 import project.web.backendBet.model.Team;
@@ -69,5 +70,17 @@ public class MatchService {
                         m.getAwayGoals()
                 ))
                 .toList();
+    }
+
+    @Transactional
+    public Match setScore(SetScoreRequest req) {
+        Match m = matchRepo.findById(req.matchId())
+                .orElseThrow(() -> new IllegalArgumentException("Match introuvable"));
+        // (Optionnel) empêcher changement si déjà FINISHED, etc.
+        m.setHomeGoals(req.homeGoals());
+        m.setAwayGoals(req.awayGoals());
+        // si tu as le statut :
+        // m.setStatus(MatchStatus.FINISHED);
+        return m;
     }
 }
