@@ -3,11 +3,14 @@ package project.web.backendBet.service;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import project.web.backendBet.dto.CreateMatchRequest;
+import project.web.backendBet.dto.MatchSummary;
 import project.web.backendBet.model.Match;
 import project.web.backendBet.model.MatchStatus;
 import project.web.backendBet.model.Team;
 import project.web.backendBet.repo.MatchRepository;
 import project.web.backendBet.repo.TeamRepository;
+
+import java.util.List;
 
 @Service
 public class MatchService {
@@ -47,5 +50,24 @@ public class MatchService {
         m.setStatus(MatchStatus.SCHEDULED);
 
         return matchRepo.save(m);
+    }
+
+    @Transactional
+    public List<MatchSummary> listByWeek(int week) {
+        return matchRepo.findByWeekWithTeams(week).stream()
+                .map(m -> new MatchSummary(
+                        m.getId(),
+                        m.getWeek(),
+                        m.getMatchDate(),
+                        // m.getStatus() != null ? m.getStatus().name() : null
+                        null, // ← si pas encore de champ status
+                        m.getHomeTeam().getId(),
+                        m.getHomeTeam().getName(),
+                        m.getAwayTeam().getId(),
+                        m.getAwayTeam().getName(),
+                        m.getHomeGoals(),
+                        m.getAwayGoals()
+                ))
+                .toList();
     }
 }
