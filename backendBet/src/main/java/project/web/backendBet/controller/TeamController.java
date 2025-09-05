@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import project.web.backendBet.dto.TeamList;
 import project.web.backendBet.model.Team;
 import project.web.backendBet.service.TeamService;
 
@@ -18,6 +19,11 @@ public class TeamController {
 
     public TeamController(TeamService teamService) {
         this.teamService = teamService;
+    }
+
+    @GetMapping()
+    public List<TeamList> listTeams() {
+        return teamService.listOptions();
     }
 
     @GetMapping("/ranking")

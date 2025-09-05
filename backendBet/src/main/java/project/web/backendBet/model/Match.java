@@ -35,5 +35,9 @@ public class Match {
     private int homeGoals;
     private int awayGoals;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 10)
+    private MatchStatus status = MatchStatus.SCHEDULED;
+
 
 }

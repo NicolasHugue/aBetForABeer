@@ -29,6 +29,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         // PUBLIC
                         .requestMatchers(HttpMethod.GET, "/api/teams/ranking").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/teams").permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
                         // SCHEDULE (lecture) → USER ou ADMIN
                         .requestMatchers(HttpMethod.GET, "/api/matches/**").hasAnyRole("USER","ADMIN")

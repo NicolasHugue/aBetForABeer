@@ -16,4 +16,5 @@ public interface TeamRepository extends JpaRepository<Team, Long> {
                       t.name ASC
             """)
     List<Team> ranking();
+    List<Team> findAllByOrderByNameAsc();
 }
