@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import project.web.backendBet.model.AppUser;
 import project.web.backendBet.model.Role;
@@ -11,6 +12,7 @@ import project.web.backendBet.repo.UserRepository;
 
 @Configuration
 @RequiredArgsConstructor
+@Profile("dev")
 public class DataInitializer {
 
     private final PasswordEncoder encoder;

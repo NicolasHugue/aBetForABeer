@@ -103,6 +103,7 @@ resource "azurerm_linux_web_app" "backend" {
   app_settings = {
     WEBSITES_PORT                    = "8080"
     # Spring config via env
+    SPRING_PROFILES_ACTIVE        = "prod" 
     SPRING_DATASOURCE_URL            = local.jdbc_url
     SPRING_DATASOURCE_USERNAME       = var.pg_admin_login
     SPRING_DATASOURCE_PASSWORD       = var.pg_admin_password
