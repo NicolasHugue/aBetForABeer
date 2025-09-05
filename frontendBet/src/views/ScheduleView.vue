@@ -57,6 +57,13 @@ export default {
         this.fetchMatches();
       }
     },
+    onScoreUpdated({ matchId, homeGoals, awayGoals }) {
+      const i = this.matches.findIndex((m) => m.id === matchId);
+      if (i !== -1) {
+        this.matches[i], "homeGoals", homeGoals;
+        this.matches[i], "awayGoals", awayGoals;
+      }
+    },
   },
 };
 </script>
@@ -91,7 +98,7 @@ export default {
     </div>
 
     <div class="space-y-2" v-else>
-      <MatchCard v-for="m in matches" :key="m.id" :match="m" />
+      <MatchCard v-for="m in matches" :key="m.id" :match="m" @score-updated="onScoreUpdated" />
     </div>
   </div>
 </template>
