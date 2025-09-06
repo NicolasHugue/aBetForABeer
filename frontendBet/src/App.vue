@@ -1,11 +1,13 @@
 <script setup>
 import LoginButton from "@/components/LoginButton.vue";
+import { useAuthStore } from "./stores/auth";
+const auth = useAuthStore();
 </script>
 
 <template>
   <div class="min-h-screen flex flex-col bg-gray-50">
     <header class="bg-gray-900">
-      <h1 class="text-3xl font-bold text-orange-500 text-center py-4">A Bet For A Beer</h1>
+      <h1 class="text-2xl font-bold text-orange-500 text-center py-2">A Bet For A Beer</h1>
     </header>
 
     <nav class="bg-gray-100 border-b">
@@ -17,7 +19,7 @@ import LoginButton from "@/components/LoginButton.vue";
                 Classement
               </router-link>
             </li>
-            <li>
+            <li v-if="auth.isAuthenticated">
               <router-link
                 :to="{ name: 'schedule' }"
                 class="nav-link"
@@ -26,7 +28,7 @@ import LoginButton from "@/components/LoginButton.vue";
                 Calendrier
               </router-link>
             </li>
-            <li>
+            <li v-if="auth.isAdmin">
               <router-link
                 :to="{ name: 'addMatch' }"
                 class="nav-link"

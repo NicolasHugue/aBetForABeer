@@ -9,10 +9,8 @@ export default {
 </script>
 
 <template>
-  <div class="overflow-x-auto -mx-4 sm:mx-0">
-    <table
-      class="min-w-[780px] w-full border-collapse bg-white rounded-lg shadow-lg overflow-hidden"
-    >
+  <div class="overflow-x-auto -mx-4 sm:mx-0 shadow-lg">
+    <table class="min-w-[780px] w-full border-collapse bg-white rounded-lg overflow-hidden">
       <thead class="bg-gray-800 text-white px-4 py-2 uppercase">
         <tr>
           <th

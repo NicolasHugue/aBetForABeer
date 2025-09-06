@@ -23,7 +23,7 @@ export default {
 <template>
   <h2 class="text-2xl px-20">Classement championnat 3<sup>ème</sup> provincial :</h2>
 
-  <div class="px-20">
+  <div class="px-4 sm:px-10 md:px-20">
     <ranking-table
       :headers="['Equipes', 'PTS', 'M', 'V', 'N', 'D', '+', '-', '+/-']"
       :fields="[
